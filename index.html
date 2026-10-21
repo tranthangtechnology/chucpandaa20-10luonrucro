@@ -27,12 +27,10 @@
       transition: background 1.2s ease;
     }
 
-    /* Nền hồng mộng mơ, rực rỡ cho trang trái tim */
     body.pink-mode {
       background: radial-gradient(circle at center, #ff758c 0%, #ff4d79 55%, #c9184a 100%);
     }
 
-    /* Canvas Hiệu ứng Nền & Hạt Pixel 3D */
     #particleCanvas {
       position: fixed;
       top: 0;
@@ -43,7 +41,6 @@
       z-index: 1;
     }
 
-    /* Hiệu ứng chuyển cảnh chữ ở trang cuối */
     .sequence-text {
       position: fixed;
       top: 50%;
@@ -70,7 +67,6 @@
       transform: translate(-50%, -50%) scale(1.05);
     }
 
-    /* Khung ảnh Polaroid lơ lửng ở 4 góc */
     .floating-polaroid {
       position: fixed;
       width: clamp(120px, 16vw, 165px);
@@ -86,7 +82,6 @@
       pointer-events: none;
     }
 
-    /* Vị trí từng ảnh và hiệu ứng lơ lửng riêng */
     #polaroid1 { top: 10%; left: 5%; transform: rotate(-7deg) scale(0); }
     #polaroid1.show { transform: rotate(-7deg) scale(1); opacity: 1; pointer-events: auto; animation: floatP1 4s ease-in-out infinite alternate; }
 
@@ -120,7 +115,6 @@
       font-weight: 700;
     }
 
-    /* --- MÀN HÌNH NHẬP MẬT KHẨU (LOCK SCREEN) --- */
     .lock-screen {
       position: fixed;
       top: 0;
@@ -217,7 +211,6 @@
       font-weight: 700;
     }
 
-    /* --- GIAO DIỆN CHÍNH --- */
     .main-content {
       opacity: 0;
       visibility: hidden;
@@ -246,7 +239,6 @@
       transition: all 1s ease;
     }
 
-    /* --- NÚT NHẠC LOFI (Góc dưới bên phải) --- */
     .music-widget {
       position: fixed;
       bottom: clamp(15px, 3vw, 25px);
@@ -290,7 +282,6 @@
       color: #ff3366;
     }
 
-    /* Khung Main Card 3D Glassmorphism */
     .stage-container {
       width: 100%;
       max-width: 460px;
@@ -323,7 +314,6 @@
       transform: translateZ(20px);
     }
 
-    /* Panda SVG */
     .panda-stage {
       position: relative;
       width: clamp(150px, 42vw, 210px);
@@ -355,7 +345,6 @@
       text-shadow: 0 2px 10px rgba(255, 42, 95, 0.15);
     }
 
-    /* Wish Box */
     .polaroid-card {
       background: #ffffff;
       border-radius: 20px;
@@ -417,14 +406,11 @@
 </head>
 <body>
 
-  <!-- Canvas Nền & Hạt Pixel 3D -->
   <canvas id="particleCanvas"></canvas>
 
-  <!-- Các dòng chữ chuyển cảnh ở trang cuối -->
   <div class="sequence-text" id="textStep1">Happy Vietnamese Women's Day! 🌷🎁</div>
   <div class="sequence-text" id="textStep2">Pandaaa 🐼✨</div>
 
-  <!-- 4 Khung ảnh Polaroid lơ lửng ở 4 góc -->
   <div class="floating-polaroid" id="polaroid1">
     <img src="pandaa.jpg" alt="Memories 💖">
     <div class="polaroid-caption">My Princess 🌸</div>
@@ -445,7 +431,6 @@
     <div class="polaroid-caption">Memories 🌷</div>
   </div>
 
-  <!-- MÀN HÌNH NHẬP MẬT KHẨU -->
   <div class="lock-screen" id="lockScreen">
     <div class="lock-box">
       <h2>🐼 Món Quà Bí Mật 20/10</h2>
@@ -456,14 +441,12 @@
     </div>
   </div>
 
-  <!-- NỘI DUNG CHÍNH -->
   <div class="main-content" id="mainContent">
     <div class="stage-container" id="stage">
       <div class="badge-2010">
         <span>✨ HAPPY 20/10 ✨</span>
       </div>
 
-      <!-- Chú Gấu Panda -->
       <div class="panda-stage" onclick="handleNextStep()">
         <svg class="panda-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -514,18 +497,15 @@
     </div>
   </div>
 
-  <!-- WIDGET NHẠC LOFI -->
   <div class="music-widget" id="musicWidget" onclick="toggleAudio()">
     <span class="disc">💿</span>
     <span class="music-text" id="musicStatus">Bật Nhạc Lofi 🎵</span>
   </div>
   <audio id="bgAudio" loop src="audio.mp3"></audio>
 
-  <!-- Thư viện Pháo Hoa Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
   <script>
-    // --- XỬ LÝ MẬT KHẨU & PHÁT NHẠC TRỰC TIẾP ---
     const correctPassword = "20112009"; 
 
     function checkPassword() {
@@ -539,7 +519,6 @@
         lockScreen.classList.add('hidden');
         mainContent.classList.add('show');
 
-        // Phát nhạc ngay trong sự kiện click hợp lệ của người dùng (vượt qua chính sách chặn của trình duyệt)
         const audio = document.getElementById('bgAudio');
         audio.play().then(() => {
           document.getElementById('musicWidget').classList.add('playing');
@@ -561,7 +540,6 @@
       }
     }
 
-    // --- LOGIC TRANG & LỜI CHÚC ---
     const wishes = [
       "Chúc Pandaa ngày 20/10 luôn ngập tràn niềm vui, ngọt ngào như mầm trúc nhỏ và xinh đẹp rạng rỡ như những bông hoa xuân! 🌸💖",
       "Panda oi! Mong Pandaa luôn tự tin, hạnh phúc và thành công trên mọi hành trình sắp tới! 🐾✨",
@@ -571,7 +549,7 @@
 
     let currentWishIndex = 0;
     let isTyping = false;
-    let stageMode = 'wishes'; // 'wishes', 'seq1', 'seq2', 'heart3d'
+    let stageMode = 'wishes'; 
 
     function handleNextStep() {
       if (isTyping) return;
@@ -593,28 +571,23 @@
             document.getElementById('btnText').innerText = "Tiếp Theo";
           }
         } else {
-          // Bắt đầu chuỗi chuyển cảnh cuối cùng
           stageMode = 'seq1';
           document.getElementById('mainContent').classList.add('hidden-stage');
           document.body.classList.add('pink-mode');
 
-          // Hiện dòng chữ 1: Happy Vietnamese Women's Day! 🌷🎁
           const text1 = document.getElementById('textStep1');
           const text2 = document.getElementById('textStep2');
           text1.classList.add('show');
 
-          // Sau 3 giây, ẩn chữ 1, hiện chữ 2: Pandaaa 🐼✨
           setTimeout(() => {
             text1.classList.remove('show');
             text2.classList.add('show');
             stageMode = 'seq2';
 
-            // Sau 3 giây nữa, ẩn chữ 2 và chuyển sang hiệu ứng hội tụ trái tim 3D
             setTimeout(() => {
               text2.classList.remove('show');
               stageMode = 'heart3d';
 
-              // Sau khi trái tim hội tụ, lần lượt hiện các ảnh Polaroid ở các góc
               setTimeout(() => { document.getElementById('polaroid1').classList.add('show'); }, 400);
               setTimeout(() => { document.getElementById('polaroid2').classList.add('show'); }, 900);
               setTimeout(() => { document.getElementById('polaroid3').classList.add('show'); }, 1400);
@@ -644,7 +617,6 @@
       type();
     }
 
-    // --- CANVAS BACKGROUND & 3D ROTATING PARTICLE HEART + FLOATING PETALS/FLOWERS ---
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -655,7 +627,6 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Hạt cánh hoa, trái tim và hoa rơi nhẹ nhàng ở nền hồng mộng mơ
     let fallingDecor = Array.from({ length: 45 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -668,7 +639,6 @@
       type: Math.random() > 0.5 ? 'petal' : 'heart'
     }));
 
-    // ~1300 hạt 3D tạo thành trái tim xoay (Màu trắng hơi hồng)
     const particleCount = 1300;
     let heartParticles = [];
     let angleY = 0;
@@ -720,7 +690,6 @@
     function animateCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Vẽ hiệu ứng cánh hoa và họa tiết rơi xuyên suốt
       fallingDecor.forEach(p => {
         ctx.save();
         ctx.translate(p.x, p.y);
@@ -750,7 +719,6 @@
         }
       });
 
-      // Nếu đang ở giai đoạn cuối (heart3d), vẽ trái tim 3D xoay
       if (stageMode === 'heart3d') {
         angleY += 0.015;
         heartParticles.forEach(p => {
@@ -763,7 +731,6 @@
     }
     animateCanvas();
 
-    // Vệt sao bay theo chuột
     const trailEmojis = ['✨', '💖', '🌸', '🐾', '💕', '⭐'];
     let lastTime = 0;
     document.addEventListener('mousemove', (e) => {
@@ -779,7 +746,6 @@
       setTimeout(() => particle.remove(), 800);
     });
 
-    // Bật/Tắt nhạc Lofi thủ công qua widget
     function toggleAudio() {
       const audio = document.getElementById('bgAudio');
       const widget = document.getElementById('musicWidget');
